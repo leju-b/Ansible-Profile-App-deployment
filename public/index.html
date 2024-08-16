@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile Picture Upload</title>
+  <style>
+    /* General Styles */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #99a8a9;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    h1 {
+      color: #0056b3;
+      text-align: center;
+    }
+
+    /* Form Styles */
+    form {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      max-width: 500px;
+      width: 100%;
+      max-height: max-content;
+    }
+
+    input[type="text"], input[type="file"], button {
+      display: block;
+      width: calc(100% - 20px);
+      margin: 20px auto;
+      padding: 10px;
+      border-radius: 4px;
+      border: 1px solid #ddd;
+      height: 20px;
+    }
+
+    input[type="text"]:focus, input[type="file"]:focus {
+      border-color: #007bff;
+      outline: none;
+    }
+
+    button {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      padding: 20px;
+      width: 100%;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <h1>Upload Profile Picture</h1>
+  <form action="/upload" method="post" enctype="multipart/form-data">
+    <input type="text" name="userId" placeholder="User ID" required>
+    <input type="text" name="userName" placeholder="User Name" required>
+    <input type="file" name="profilePicture" accept="image/*" required>
+    <button type="submit">Upload</button>
+  </form>
+</body>
+</html>
