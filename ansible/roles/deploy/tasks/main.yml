@@ -1,0 +1,24 @@
+---
+
+- name: Clone repository
+  git:
+    repo: 'https://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@github.com/leju-b/Profile-App.git'
+    dest: /home/ubuntu/Profile-App
+    version: main
+    accept_hostkey: yes
+    update: yes
+
+- name: Install npm dependencies
+  command: npm install
+  args:
+    chdir: /home/ubuntu/Profile-App
+
+- name: Install dotenv package
+  command: npm install dotenv
+  args:
+    chdir: /home/ubuntu/Profile-App
+
+- name: Install Node.js dependencies
+  command: npm install express mysql2 aws-sdk multer
+  args:
+    chdir: /home/ubuntu/Profile-App

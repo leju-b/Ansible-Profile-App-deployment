@@ -1,0 +1,17 @@
+---
+- name: Create .env file
+  copy:
+    dest: /home/ubuntu/Profile-App/.env
+    content: |
+      DB_HOST=database-1.c3qw2oqme9gi.ap-south-1.rds.amazonaws.com
+      DB_USER=admin
+      DB_PASSWORD=passRDS02
+      DB_NAME=database-1
+      S3_BUCKET=bucket-profile-app
+      AWS_ACCESS_KEY_ID=AKIA6ODU4Y7HEPP4BDKF
+      AWS_SECRET_ACCESS_KEY=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
+      AWS_REGION=ap-south-1
+    mode: '0600'
+    owner: ubuntu
+    group: ubuntu
+

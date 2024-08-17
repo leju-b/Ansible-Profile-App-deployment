@@ -1,0 +1,45 @@
+---
+- name: Install PM2 globally
+  npm:
+    name: pm2
+    state: present
+    global: yes
+
+- name: Install application dependencies
+  npm:
+    path: /home/ubuntu/Profile-App
+    state: present
+
+- name: Start the application with PM2
+  shell: pm2 start server.js -f --name myapp
+  args:
+    chdir: /home/ubuntu/Profile-App
+  register: pm2_start_result
+
+- name: Get the PM2 startup command for systemd
+  command: pm2 startup systemd
+  register: pm2_startup_command
+  changed_when: false
+
+- name: Execute the PM2 startup command
+  shell: |
+    sudo env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -u ubuntu --hp /home/ubuntu
+  become: yes
+
+- name: Save PM2 process list
+  shell: pm2 save
+  when: pm2_start_result.changed
+
+- name: Reload NGINX to apply changes
+  service:
+    name: nginx
+    state: reloaded
+  become: yes
+  when: pm2_start_result.changed
+
+- name: Ensure NGINX is running
+  service:
+    name: nginx
+    state: started
+    enabled: yes
+  become: yes

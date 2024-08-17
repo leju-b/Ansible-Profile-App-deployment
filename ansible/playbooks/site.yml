@@ -1,0 +1,11 @@
+---
+
+- hosts: all
+  become: yes
+  roles:
+    - common
+    - deploy
+    - env
+    - nginx
+    - sql
+    - pm2  

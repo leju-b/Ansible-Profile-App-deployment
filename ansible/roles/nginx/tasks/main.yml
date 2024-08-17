@@ -1,0 +1,28 @@
+---
+- name: Install NGINX
+  apt:
+    name: nginx
+    state: present
+    update_cache: yes
+
+- name: Remove default NGINX configuration
+  file:
+    path: /etc/nginx/sites-enabled/default
+    state: absent
+
+- name: Create NGINX configuration file for the Profile App
+  template:
+    src: nginx_profile_app.j2
+    dest: /etc/nginx/sites-available/profile_app
+    mode: '0644'
+
+- name: Enable the Profile App configuration
+  file:
+    src: /etc/nginx/sites-available/profile_app
+    dest: /etc/nginx/sites-enabled/profile_app
+    state: link
+
+- name: Restart NGINX
+  service:
+    name: nginx
+    state: restarted

@@ -1,0 +1,32 @@
+- name: Add NodeSource GPG key
+  apt_key:
+    url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
+    state: present
+
+- name: Add NodeSource APT repository
+  apt_repository:
+    repo: 'deb https://deb.nodesource.com/node_20.x focal main'
+    state: present
+
+- name: Update apt cache
+  apt:
+    update_cache: yes
+
+- name: Upgrade all packages to the latest version
+  apt:
+    upgrade: dist
+
+- name: Install Node.js
+  apt:
+    name: nodejs
+    state: present
+
+- name: Install git
+  apt:
+    name: git
+    state: present
+
+- name: Install NGINX
+  apt:
+    name: nginx
+    state: present
