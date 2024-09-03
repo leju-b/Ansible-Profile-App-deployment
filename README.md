@@ -3,7 +3,7 @@
 ## Overview
 
 This project demonstrates the deployment of a Node.js application that interacts with AWS RDS for database storage and S3 for file storage. The app allows users to upload their ID, name, and profile picture, which are then stored in the RDS database and S3 bucket. The project is automated using Ansible, ensuring a smooth and repeatable deployment process across multiple instances.
-[complete documentation](./blob/main/Deploying_Nodejs_App_on_AWS_EC2_Ubuntu_Instance_using_ansible.pdf)
+[complete documentation](/Deploying_Nodejs_App_on_AWS_EC2_Ubuntu_Instance_using_ansible.pdf)
 ## Features
 
 - **Node.js Application**: A simple app built with Node.js, Express, and MySQL, allowing users to upload data and images.
